@@ -13,37 +13,17 @@ tags:
 
 >最近在使用iptables 的mark模块，为防止以后忘记命令使用，故写此博客。
 
-# 所有TCP数据标记1
+#### 所有TCP数据标记1
 	iptables -t mangle -A PREROUTING -p tcp -j MARK --set-mark 1
 	
-# 匹配标记1的数据并保存数据包中的MARK到连接中
+#### 匹配标记1的数据并保存数据包中的MARK到连接中
 	iptables -t mangle -A PREROUTING -p tcp -m mark --mark 1 -j CONNMARK --save-mark
 	
-# 标记连接
+#### 标记连接
 	iptables -t mangle -A PREROUTING -p tcp -j CONNMARK --set-mark 1
 	
-# 匹配连接标记1并将连接中的标记设置到数据包中
+#### 匹配连接标记1并将连接中的标记设置到数据包中
 	iptables -t mangle -A PREROUTING -p tcp -m connmark --mark 1 -j CONNMARK --restore-mark
 	
-# 接下来就在forward链进行匹配数据包。
+#### 接下来就在forward链进行匹配数据包。
 	iptables -t mangle -A PREROUTING -p tcp -m mark --mark 1 -j DROP
-	
->随便整理的一些自用的Git指令
-
-
-# GitHub创建仓库提示代码
-
-	echo "# 项目名" >> README.md
-	git init
-	git add README.md
-	git commit -m "first commit"
-	git remote add origin git@github.com:qiubaiying/项目名.git
-	git push -u origin master
-
-若仓库存在直接push
-
-	git remote add origin git@github.com:qiubaiying/test.git
-	git push -u origin master
-
-
-# 常用操作
