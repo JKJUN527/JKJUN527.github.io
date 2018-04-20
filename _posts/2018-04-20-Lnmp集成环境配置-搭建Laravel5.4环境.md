@@ -44,7 +44,7 @@ tags:
 	$ composer -v 
 ```
 逐行执行上述命令，得到的结果如下图，表明composer已安装成功。
-![6.png](http://jkjun.cn/images/2018-04-20/6.png)
+![6.png](http://jkjun.cn/images/2018-04-20/6.jpg)
 
 使用composer 创建 laravel 项目
 ```
