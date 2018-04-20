@@ -35,4 +35,32 @@ tags:
 ![5.png](http://jkjun.cn/images/2018-04-20/5.png)
 出现上图所示界面，则表示安装完成。
 
+## 安装配置laravel5.4的环境
+```
+	安装composer	
+	$ curl -sS https://getcomposer.org/installer | php 
+	$ mv composer.phar /usr/local/bin/composer #使用国内镜像 
+	$ composer config -g repo.packagist composer https://packagist.phpcomposer.com 
+	$ composer -v 
+```
+逐行执行上述命令，得到的结果如下图，表明composer已安装成功。
+![6.png](http://jkjun.cn/images/2018-04-20/6.png)
 
+使用composer 创建 laravel 项目
+```
+	composer create-project --prefer-dist laravel/laravel blog "5.4.*"
+```
+或者直接将你的项目克隆到网站目录下
+
+**坑2：网站打开一片空白-无任何报错信息**
+```
+	解决办法有以下几个部分：
+	1、检查是否开启了Lravel的debug调试，在.env文件中开启debug
+	2、检查是否开启php配置文件中debug打印功能，在php.ini配置文件中。
+	3、可能是没有开启网站访问路径限制为根目录上一层，因为laravel的入口地址在public文件下，所有整个网站的访问权限路径应该在public上层。修改文件/user/local/nginx/conf/fastcgi.conf  将open_basedir=/home/wwwroot/demo/public:/tmp/:/proc/";改为open_basedir=/home/wwwroot/demo/:/tmp/:/proc/";
+```
+
+**坑3：网站访问权限不够**
+```
+	给storage目录及public目录赋予权限。chmod 777 storage
+```
