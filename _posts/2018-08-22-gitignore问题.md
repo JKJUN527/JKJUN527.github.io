@@ -1,13 +1,13 @@
 ---
 layout:     post
-title:      Laravel数据表操作
+title:      .gitignore 问题
 subtitle:   
-date:       2018-07-13
+date:       2018-08-22
 author:     JKJUN
 header-img: img/post-bg-miui6.jpg
 catalog: true
 tags:
-    - laravel Schema 数据表操作
+    - gitignore
 ---
 
 # 背景
